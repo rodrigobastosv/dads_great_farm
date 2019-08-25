@@ -47,14 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SizedBox(height: 16.0),
               _buildAnimalsFirstRow(),
-              SizedBox(height: 8.0),
               _buildAnimalsSecondRow(),
-              SizedBox(height: 8.0),
               _buildAnimalsThirdRow(),
-              SizedBox(height: 8.0),
               _buildAnimalsFourthRow(),
             ],
           ),
@@ -65,11 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildAnimalsFirstRow() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         _buildAnimal('bear.jpeg', 'bear.wav'),
-        _buildSpacer(),
         _buildAnimal('birds.jpg', 'birds.wav'),
-        _buildSpacer(),
         _buildAnimal('cat.jpeg', 'cat.wav'),
       ],
     );
@@ -79,9 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Row(
       children: <Widget>[
         _buildAnimal('chicken.jpeg', 'chicken.wav'),
-        _buildSpacer(),
         _buildAnimal('lion.jpeg', 'lion.wav'),
-        _buildSpacer(),
         _buildAnimal('cow.jpg', 'cow.wav'),
       ],
     );
@@ -91,9 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Row(
       children: <Widget>[
         _buildAnimal('dog.jpg', 'dog.wav'),
-        _buildSpacer(),
         _buildAnimal('dolphin.jpg', 'dolphin.wav'),
-        _buildSpacer(),
         _buildAnimal('donkey.jpeg', 'donkey.wav'),
       ],
     );
@@ -103,9 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Row(
       children: <Widget>[
         _buildAnimal('hawk.jpeg', 'hawk.wav'),
-        _buildSpacer(),
         _buildAnimal('horse.jpg', 'horse.wav'),
-        _buildSpacer(),
         _buildAnimal('rooster.jpeg', 'rooster.wav'),
       ],
     );
@@ -114,20 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildAnimal(String imageName, String soundName) {
     return Expanded(
       flex: 8,
-      child: GestureDetector(
-        onTap: () => _playAnimalSound(soundName),
-        child: CircleAvatar(
-          maxRadius: 70.0,
-          backgroundImage: AssetImage('assets/images/$imageName'),
+      child: Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: GestureDetector(
+          onTap: () => _playAnimalSound(soundName),
+          child: CircleAvatar(
+            maxRadius: 70.0,
+            backgroundImage: AssetImage('assets/images/$imageName'),
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _buildSpacer() {
-    return Expanded(
-      flex: 1,
-      child: Container(),
     );
   }
 
